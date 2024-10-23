@@ -24,4 +24,5 @@ public class Card : ScriptableObject
     public Buff strength;
     public Buff ritual;
     public Buff enrage;
+    public Buff selfDamage;
 }
