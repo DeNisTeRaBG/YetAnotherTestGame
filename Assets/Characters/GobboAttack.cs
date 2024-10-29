@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class GobboAttack : MonoBehaviour
 {
+    private TurnBasedBehaviour turn;
+
     public int dmg = 6;
     public int snow = 2;
 
@@ -17,7 +19,7 @@ public class GobboAttack : MonoBehaviour
 
     private Button drawButton;
 
-    private int intent=0;
+    private int intent = 0;
 
     private Image intentSprite;
     public List<Sprite> intentSpriteList = new List<Sprite>();
@@ -35,6 +37,8 @@ public class GobboAttack : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
         drawButton = GameObject.FindGameObjectWithTag("EndTurn").GetComponent<Button>();
+
+        turn = GameObject.FindGameObjectWithTag("GM").GetComponent<TurnBasedBehaviour>();
 
         intentSprite = this.gameObject.transform.GetChild(0).GetChild(3).GetComponent<Image>(); //GameObject.FindGameObjectWithTag("Intent").GetComponent<Image>();
 
@@ -60,15 +64,10 @@ public class GobboAttack : MonoBehaviour
 
     }
 
-    void UseAttack()
+    public void UseAttack()
     {
-        if (picked == 0)
-        {
-            player.currentHP -= dmg;
-        }
-        else if (picked == 1)
-        {
-            player.currentHP -= snow;
-        }
+        player.currentHP -= Attacks[picked].dmg;
+        Debug.Log(Attacks[picked].dmg);
+        PickIntent();
     }
 }
