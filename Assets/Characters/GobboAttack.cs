@@ -47,20 +47,10 @@ public class GobboAttack : MonoBehaviour
 
     void PickIntent()
     {
-        intent = Random.Range(0, 10);
+        intent = Random.Range(0, 1);
 
-        Debug.Log(intent);
-
-        if (intent < 5)
-        {
-            picked = 0;
-            intentSprite.sprite = intentSpriteList[1];
-        }
-        else
-        {
-            picked = 1;
-            intentSprite.sprite = intentSpriteList[0];
-        }
+        intentSprite.sprite = intentSpriteList[intent];
+        picked = intent;
 
     }
 
