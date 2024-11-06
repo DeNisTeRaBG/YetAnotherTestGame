@@ -38,6 +38,6 @@ public class TurnBasedBehaviour : MonoBehaviour
             attack.UseAttack();
             yield return new WaitForSeconds(0.5f);
         }
-        Debug.Log("This Works 3");
+        Debug.Log("This Works 3333");
     }
 }
