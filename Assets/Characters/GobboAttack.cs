@@ -10,7 +10,7 @@ public class GobboAttack : MonoBehaviour
 {
     private TurnBasedBehaviour turn;
 
-    private int _cycleLength = 2;
+    private int _cycleLength = 1;
 
     public List<Card> Attacks = new List<Card>();
 
@@ -57,7 +57,7 @@ public class GobboAttack : MonoBehaviour
     public void UseAttack()
     {
         Debug.Log(Attacks[picked].dmg);
-        transform.DOLocalMoveY(1, 1).SetLoops(2, LoopType.Yoyo);
+        transform.DOLocalMoveY(_cycleLength, 1).SetLoops(2, LoopType.Yoyo);
         StartCoroutine(TakeDmg());
         PickIntent();
     }

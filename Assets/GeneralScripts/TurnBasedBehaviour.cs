@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class TurnBasedBehaviour : MonoBehaviour
 {
-    private bool playerHasMoved = false;
 
     private Button yourButton;
 
@@ -25,27 +24,11 @@ public class TurnBasedBehaviour : MonoBehaviour
 
     void PlayerTurnOver()
     {
-        playerHasMoved = false;
         StartCoroutine(PlayerTurnEnd());
-    }
-
-    void PlayerTurnOn()
-    {
-        playerHasMoved = true;
-
-        for(int i = 0; i < enemy.Length; i++)
-        {
-            attack = enemy[i].GetComponent<GobboAttack>();
-
-
-            attack.UseAttack();
-        }
-       
     }
 
     IEnumerator PlayerTurnEnd()
     {
-        playerHasMoved = true;
         Debug.Log("This Works");
         for (int i = 0; i < enemy.Length; i++)
         {
