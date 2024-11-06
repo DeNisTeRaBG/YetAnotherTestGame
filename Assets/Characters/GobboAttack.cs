@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,8 +10,7 @@ public class GobboAttack : MonoBehaviour
 {
     private TurnBasedBehaviour turn;
 
-    public int dmg = 6;
-    public int snow = 2;
+    private int _cycleLength = 2;
 
     public List<Card> Attacks = new List<Card>();
 
@@ -56,8 +56,16 @@ public class GobboAttack : MonoBehaviour
 
     public void UseAttack()
     {
-        player.currentHP -= Attacks[picked].dmg;
         Debug.Log(Attacks[picked].dmg);
+        transform.DOLocalMoveY(1, 1).SetLoops(2, LoopType.Yoyo);
+        StartCoroutine(TakeDmg());
         PickIntent();
+    }
+
+
+    IEnumerator TakeDmg()
+    {
+        yield return new WaitForSeconds(2f);
+        player.currentHP -= Attacks[picked].dmg;
     }
 }

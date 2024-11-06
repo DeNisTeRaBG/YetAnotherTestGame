@@ -26,7 +26,7 @@ public class TurnBasedBehaviour : MonoBehaviour
     void PlayerTurnOver()
     {
         playerHasMoved = false;
-        PlayerTurnOn();
+        StartCoroutine(PlayerTurnEnd());
     }
 
     void PlayerTurnOn()
@@ -41,5 +41,20 @@ public class TurnBasedBehaviour : MonoBehaviour
             attack.UseAttack();
         }
        
+    }
+
+    IEnumerator PlayerTurnEnd()
+    {
+        playerHasMoved = true;
+        Debug.Log("This Works");
+        for (int i = 0; i < enemy.Length; i++)
+        {
+            attack = enemy[i].GetComponent<GobboAttack>();
+
+            Debug.Log("This Works 2");
+            attack.UseAttack();
+            yield return new WaitForSeconds(0.5f);
+        }
+        Debug.Log("This Works 3");
     }
 }

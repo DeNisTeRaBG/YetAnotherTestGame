@@ -29,8 +29,8 @@ public class Deck : MonoBehaviour
 
     public void DrawACard()
     {
-        if (cardsInHand.Count == maxAmountOfCardsInHand)
-        {
+        if (cardsInHand.Count == maxAmountOfCardsInHand) // Checks if the cards in hand are equal to the allowed number of cards
+        {                                                // That is so we dont draw more than we have in hand
             if (drawPile.Count == 0) Shuffle();
 
             GameObject card = drawPile.Pop();
